@@ -19,7 +19,7 @@ class CoinRepositoryImpl(application: Application) : CoinRepository {
 
     private val apiService = ApiFactory.apiService
 
-    override  fun getCoinInfoList(): LiveData<List<CoinInfo>> {
+    override fun getCoinInfoList(): LiveData<List<CoinInfo>> {
         return Transformations.map(coinInfoDao.getPriceList()) {
             it.map {
                 mapper.mapDbModelToEntity(it)
@@ -27,7 +27,7 @@ class CoinRepositoryImpl(application: Application) : CoinRepository {
         }
     }
 
-    override  fun getCoinInfo(fromSymbol: String): LiveData<CoinInfo> {
+    override fun getCoinInfo(fromSymbol: String): LiveData<CoinInfo> {
         return Transformations.map(coinInfoDao.getPriceInfoAboutCoin(fromSymbol)) {
             mapper.mapDbModelToEntity(it)
         }
