@@ -2,10 +2,10 @@ package kg.damir.crypto.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import kg.damir.crypto.data.network.model.CoinInfoDto
 import kg.damir.crypto.databinding.ActivityMainBinding
+import kg.damir.crypto.domain.CoinInfo
+import kg.damir.crypto.presentation.adapter.CoinInfoAdapter
 
 class MainActivity : AppCompatActivity() {
     private lateinit var viewModel: CoinViewModel
@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         val adapter = CoinInfoAdapter(this)
         adapter.onCoinClickListener = object : CoinInfoAdapter.OnCoinClickListener {
-            override fun onCoinClick(coinPriceInfo: CoinInfoDto) {
+            override fun onCoinClick(coinPriceInfo: CoinInfo) {
                 val intent = CoinDetailActivity.newIntent(
                     this@MainActivity,
                     coinPriceInfo.fromSymbol
@@ -27,9 +27,9 @@ class MainActivity : AppCompatActivity() {
         }
         binding.rvCoinPriceList.adapter = adapter
         viewModel = ViewModelProvider(this)[CoinViewModel::class.java]
-        viewModel.priceList.observe(this, Observer {
+        viewModel.coinInfoList.observe(this) {
             adapter.coinInfoList = it
-        })
-    }
+        }
     }
 }
+

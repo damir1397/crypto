@@ -1,10 +1,10 @@
-package kg.damir.crypto.data.database.maper
+package kg.damir.crypto.data.maper
 
 import com.google.gson.Gson
 import kg.damir.crypto.data.database.CoinInfoDbModel
 import kg.damir.crypto.data.network.model.CoinInfoDto
-import kg.damir.crypto.data.network.model.CoinJsonContainerDto
-import kg.damir.crypto.data.network.model.CoinNameListDto
+import kg.damir.crypto.data.network.model.CoinInfoJsonContainerDto
+import kg.damir.crypto.data.network.model.CoinNamesListDto
 import kg.damir.crypto.domain.CoinInfo
 
 class CoinMapper {
@@ -19,7 +19,7 @@ class CoinMapper {
         imageUrl = dto.imageUrl
     )
 
-    fun mapJsonContainerToListCoinInfo(jsonContainer: CoinJsonContainerDto): List<CoinInfoDto> {
+    fun mapJsonContainerToListCoinInfo(jsonContainer: CoinInfoJsonContainerDto): List<CoinInfoDto> {
         val result = mutableListOf<CoinInfoDto>()
         val jsonObject = jsonContainer.json ?: return result
         val coinKeySet = jsonObject.keySet()
@@ -37,7 +37,7 @@ class CoinMapper {
         return result
     }
 
-    fun mapNamesListToString(namesListDto: CoinNameListDto): String {
+    fun mapNamesListToString(namesListDto: CoinNamesListDto): String {
         return namesListDto.names?.map { it.coinInfo?.name }?.joinToString(",") ?: " "
     }
 
