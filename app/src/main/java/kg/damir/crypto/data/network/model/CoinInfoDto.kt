@@ -1,9 +1,7 @@
 package kg.damir.crypto.data.network.model
 
-import kg.damir.crypto.data.network.ApiFactory.BASE_IMAGE_URL
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
-import kg.damir.crypto.utils.convertTimestampToTime
 
 data class CoinInfoDto(
     @SerializedName("TYPE")
@@ -123,12 +121,4 @@ data class CoinInfoDto(
     @SerializedName("IMAGEURL")
     @Expose
     val imageUrl: String?
-) {
-    fun getFormattedTime(): String {
-        return convertTimestampToTime(lastUpdate)
-    }
-
-    fun getFullImageUrl(): String {
-        return BASE_IMAGE_URL + imageUrl
-    }
-}
+)
