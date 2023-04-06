@@ -10,7 +10,7 @@ import kg.damir.crypto.presentation.adapter.CoinInfoAdapter
 class MainActivity : AppCompatActivity() {
     private lateinit var viewModel: CoinViewModel
 
-    val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
+    private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
