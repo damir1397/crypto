@@ -17,15 +17,11 @@ class CoinViewModel(application: Application) : AndroidViewModel(application) {
     private  val getCoinInfoUseCase = GetCoinInfoUseCase(repository)
     private  val loadDataUseCase = LoadDateUseCase(repository)
 
-
     val coinInfoList = getCoinInfoListUseCase()
     fun getDetailInfo(fSym: String)= getCoinInfoUseCase(fSym)
 
-
     init {
-        viewModelScope.launch {
-            loadDataUseCase()
-        }
+        loadDataUseCase()
     }
 
 }
