@@ -1,5 +1,9 @@
 package kg.damir.crypto.domain
 
-class GetCoinInfoUseCase(private val repository: CoinRepository) {
+import javax.inject.Inject
+
+class GetCoinInfoUseCase @Inject constructor(
+    val repository: CoinRepository
+    ) {
     operator fun invoke(fromSymbol: String) = repository.getCoinInfo(fromSymbol)
 }

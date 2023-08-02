@@ -1,5 +1,9 @@
 package kg.damir.crypto.domain
 
-class LoadDateUseCase(private val repository: CoinRepository) {
+import javax.inject.Inject
+
+class LoadDateUseCase @Inject constructor(
+    private val repository: CoinRepository
+    ) {
     operator fun invoke() = repository.loadData()
 }

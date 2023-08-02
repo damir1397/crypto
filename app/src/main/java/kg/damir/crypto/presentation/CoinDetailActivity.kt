@@ -4,14 +4,18 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import dagger.multibindings.IntoMap
 import kg.damir.crypto.R
 import kg.damir.crypto.databinding.ActivityCoinDetailBinding
+import javax.inject.Inject
 
 class CoinDetailActivity : AppCompatActivity() {
 
     private lateinit var viewModel: CoinViewModel
 
     private val binding by lazy { ActivityCoinDetailBinding.inflate(layoutInflater) }
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
